@@ -4,10 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quản lý nhân viên</title>
+	<title>Quản lý bệnh nhân</title>
 
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<!-- Bootstrap 4 -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -32,43 +32,50 @@
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
-				<h3>Bootstrap Sidebar</h3>
-				<strong>BS</strong>
+				<h3>Dashboard</h3> 
 			</div>
 
 			<ul class="list-unstyled components">
 				<li class="active">
-					<a href="#homeSubmenu">
+					<a href="#admin">
 						<i class="fa fa-home"></i>
-						Home
+						Admin
+					</a>
+				</li>
+				<li>
+					<a href="#customers">
+						<i class="fa-solid fa-user-group"></i>
+						Customers
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-briefcase"></i>
-						About
-					</a>
-					<a href="#pageSubmenu">
-						<i class="fa fa-files-o"></i>
+						<i class="fa-solid fa-file"></i>
 						Pages
 					</a>
-				</li>
+				</li> 
 				<li>
 					<a href="#">
-						<i class="fa fa-link"></i>
-						Portfolio
+						<i class="fa-solid fa-message"></i>
+						Message
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-paperclip"></i>
-						FAQ
+						<i class="fa-solid fa-question"></i>
+						Help
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-paper-plane"></i>
-						Contact
+						<i class="fa-solid fa-gear"></i>
+						Settings
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+						Sign out
 					</a>
 				</li>
 			</ul>
@@ -110,11 +117,11 @@
 					<div class="card-header myCardHeader">
 						<div class="row">
 							<div class="col-md-6">
-								<h3 class="text-left text-primary font-weight-bold">Danh sách nhân viên</h3>
+								<h3 class="text-left text-primary font-weight-bold">Danh sách bệnh nhân</h3>
 							</div>
 							<div class="col-md-6 text-right">
 								<button class="btn btn-primary" id="btnThem" data-toggle="modal"
-									data-target="#myModal">Thêm nhân viên</button>
+									data-target="#myModal">Thêm bệnh nhân</button>
 							</div>
 						</div>
 					</div>
@@ -124,7 +131,7 @@
 						<div class="row mb-3">
 							<div class="col">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Loại nhân viên" id="searchName">
+									<input type="text" class="form-control" placeholder="Loại bệnh nhân" id="searchName">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="btnTimNV"><i class="fa fa-search"></i></span>
 									</div>
@@ -135,17 +142,16 @@
 							<thead class="text-primary">
 								<tr>
 									<th class="nowrap">
-										<span class="mr-1">Tài khoản</span>
+										<span class="mr-1">Số thứ tự</span>
 										<i class="fa fa-arrow-up" id="SapXepTang"></i>
 										<i class="fa fa-arrow-down" id="SapXepGiam"></i>
 									</th>
 									<th>Họ và tên</th>
-									<th>Email</th>
-									<th>Ngày làm</th>
-									<th>Chức vụ</th>									
-									<th>Tổng lương</th>
-									<th>Xếp loại</th>
-									<th><em class="fa fa-cog"></em></th>
+									<th>Giới tính</th>
+									<th>Phòng khám</th>									
+									<th>Nhiệt độ (&#176; C)</th>
+									<th>Nhịp tim (BPM)</th>
+									<th>Oxy trong máu (%)</th>
 								</tr>
 							</thead>
 							<tbody id="tableDanhSach">
@@ -175,7 +181,7 @@
 			<div class="modal-content">
 
 				<header class="head-form mb-0">
-					<h2 id="header-title">Log In</h2>
+					<h2 id="header-title">Thông tin</h2>
 				</header>
 
 				<!-- Modal Header -->
@@ -187,18 +193,18 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 
-					<form role="form" id="formQLNV">
+					<form role="form" id="formQLBN">
 
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-user"></i></span>
+									<span class="input-group-text"><i class="fa-solid fa-list-ol"></i></span>
 								</div>
-								<input type="text" name="tk" id="tknv" class="form-control input-sm"
-									placeholder="Tài khoản">
+								<input type="text" name="tk" id="tkbn" class="form-control input-sm"
+									placeholder="Số thứ tự">
 							</div>
 
-							<span class="sp-thongbao" id="tbTKNV"></span>
+							<span class="sp-thongbao" id="tbTKBN"></span>
 						</div>
 
 						<div class="form-group">
@@ -215,72 +221,67 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-envelope"></i></span>
+									<span class="input-group-text"><i class="fa-solid fa-mars-and-venus"></i></span>
 								</div>
-								<input type="email" name="email" id="email" class="form-control input-sm"
-									placeholder="Email">
+								<select class="form-control" id="gioiTinh">
+									<option>Chọn Giới tính</option>
+									<option>Nam</option>
+									<option>Nữ</option>
+									<option>Khác</option>
+								</select>
 							</div>
 
-							<span class="sp-thongbao" id="tbEmail"></span>
+							<span class="sp-thongbao" id="tbGioiTinh"></span>
 						</div>
 
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-key"></i></span>
+									<span class="input-group-text"><i class="fa-solid fa-stethoscope"></i></span>
 								</div>
-								<input type="password" name="password" id="password" class="form-control input-sm"
-									placeholder="Mật khẩu">
+								<select class="form-control" id="phongKham">
+									<option>Chọn Phòng khám</option>
+									<option>PK nội</option>
+									<option>PK ngoại</option>
+									<option>PK nhiệt đới</option>
+								</select>
 							</div>
-							<span class="sp-thongbao" id="tbMatKhau"></span>
+
+							<span class="sp-thongbao" id="tbPhongKham"></span>
 						</div>
 
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+									<span class="input-group-text"><i class="fa-solid fa-temperature-half"></i></span>
 								</div>
-								<input type="text" name="ngaylam" id="datepicker" class="form-control"
-									placeholder="Ngày làm">
+								<input type="text" name="nhietdo" id="nhietDo" class="form-control"
+									placeholder="Nhiệt độ">
 							</div>
 
-							<span class="sp-thongbao" id="tbNgay"></span>
+							<span class="sp-thongbao" id="tbNhietDo"></span>
 						</div>
 						
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-money" aria-hidden="true"></i></span>
+									<span class="input-group-text"><i class="fa-solid fa-heart-pulse"></i></span>
 								</div>
-								<input type="text" name="luongCB" id="luongCB" class="form-control input-sm"
-									placeholder="Lương cơ bản">
+								<input type="text" name="nhiptim" id="nhipTim" class="form-control input-sm"
+									placeholder="Nhịp tim">
 							</div>
-							<span class="sp-thongbao" id="tbLuongCB"></span>
+							<span class="sp-thongbao" id="tbNhipTim"></span>
 						</div>
+						
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+									<span class="input-group-text"><i class="fa-solid fa-lungs"></i></span>
 								</div>
-								<select class="form-control" id="chucvu">
-									<option>Chọn chức vụ</option>
-									<option>Sếp</option>
-									<option>Trưởng phòng</option>
-									<option>Nhân viên</option>
-								</select>
+								<input type="text" name="oxy" id="oxy" class="form-control input-sm"
+									placeholder="Oxy trong máu">
 							</div>
-
-							<span class="sp-thongbao" id="tbChucVu"></span>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-								</div>
-								<input type="text" name="gioLam" id="gioLam" class="form-control input-sm"
-									placeholder="Giờ làm">
-							</div>
-							<span class="sp-thongbao" id="tbGiolam"></span>
+							<span class="sp-thongbao" id="tbOxy"></span>
 						</div>
 
 					</form>
@@ -288,9 +289,9 @@
 
 				<!-- Modal footer -->
 				<div class="modal-footer" id="modal-footer">
-					<button id="btnThemNV" type="button" class="btn btn-success" onclick="themNV()">Thêm người dùng</button>
+					<button id="btnThemNV" type="button" class="btn btn-success" onclick="themBN()">Thêm người dùng</button>
 					<button id="btnReset" type="button" class="btn btn-primary" onclick="resetForm()">Reset</button>
-					<button id="btnCapNhat" type="button" class="btn btn-primary" onclick="capNhatNV()">Cập nhật</button>
+					<button id="btnCapNhat" type="button" class="btn btn-primary" onclick="capNhatBN()">Cập nhật</button>
 					<button id="btnDong" type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
 				</div>
 
@@ -312,7 +313,7 @@
 	<!-- Date Picker -->
 	<!-- <script src="js/jquery-ui.min.js"></script> -->
 	<script src="./js/jquery-ui.js"></script>
-	<script src="js/datepicker.js"></script>
+	<!-- <script src="js/datepicker.js"></script> thư viện chọn date -->
 
 	<!-- Wow -->
 	<!-- <script src="js/wow.min.js"></script>	
@@ -332,10 +333,16 @@
 	</script>
 
 	<!-- JS -->
-	<script src="./js/JS_chucnang/NhanVien.js"></script>
+	<!-- <script src="./js/JS_chucnang/NhanVien.js"></script>
 	<script src="./js/JS_chucnang/DanhSachNhanVien.js"></script>
 	<script src="./js/JS_chucnang/Validation.js"></script>
-	<script src="./js/JS_chucnang/main.js"></script>
+	<script src="./js/JS_chucnang/main.js"></script> -->
+
+
+	<script src="./js/JS_chucnang_verHopital/BenhNhan.js"></script>
+	<script src="./js/JS_chucnang_verHopital/DanhSachBenhNhan.js"></script>
+	<script src="./js/JS_chucnang_verHopital/Validation.js"></script>
+	<script src="./js/JS_chucnang_verHopital/main.js"></script>
 </body>
 
 </html>
